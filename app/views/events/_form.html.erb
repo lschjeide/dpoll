@@ -1,0 +1,5 @@
+<%= simple_form_for(event) do |f| %>
+    <%= f.input :name, label:'Event Name', error_html: {id: 'name'} %>
+    <%= f.input :description, error_html: {id: 'description'} %>
+    <%= f.submit 'Add' %>
+<% end %>
