@@ -10,6 +10,8 @@ gem 'mysql2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+gem 'simple_form'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -24,6 +26,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'protected_attributes'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -49,7 +53,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem "database_cleaner", ">= 0.9.1"
   gem 'rspec-rails', '~> 3.0.0'
   gem "capybara", ">= 2.0.2"
   gem "selenium-webdriver"
+  gem "cucumber-rails", ">= 1.3.0", require:false
 end
