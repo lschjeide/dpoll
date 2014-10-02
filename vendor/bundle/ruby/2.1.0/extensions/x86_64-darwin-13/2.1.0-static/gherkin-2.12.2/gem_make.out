@@ -1,0 +1,13 @@
+/Users/fotini/.rbenv/versions/2.1.3/bin/ruby extconf.rb 
+checking for main() in -lc... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling gherkin_lexer_zh_tw.c
+linking shared-object gherkin_lexer_zh_tw.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 gherkin_lexer_zh_tw.bundle ./.gem.20141002-4176-1xmtq0z
+installing default gherkin_lexer_zh_tw libraries
