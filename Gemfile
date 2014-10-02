@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
-ruby "2.1.0"
+ruby "2.1.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+
+gem 'mysql2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -48,4 +50,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem "capybara", ">= 2.0.2"
+  gem "selenium-webdriver"
 end
