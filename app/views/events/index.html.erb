@@ -1,8 +1,19 @@
 <h1>Add Event</h1>
 	<%= render partial: "form", locals: {event: Event.new} %>
 <h1>Events</h1>
-<table>
+<table class="table">
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Description
+		</th>
+		<th>
+			Date
+		</th>
+	</tr>	
 <% @events.each do |event| %>
-	<%= render partial: "row", locals: {event: event} %>
+	<%= render partial: "row", locals: {event: event} %></td>
 <% end %>
 </table>
