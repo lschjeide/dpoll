@@ -32,4 +32,23 @@ describe EventsController do
 	    end
 	end
 
+  describe ".delete" do
+    it "destroys the requested event" do
+      event = Event.create! valid_attributes
+      expect {
+        delete :destroy, {:id => event.to_param}
+      }.to change(Event, :count).by(-1)
+    end
+  end
+
+  describe ".update" do
+    it "changes stuff" do
+      event = Event.create! valid_attributes
+      post :update, {id: event.id, name: "some new name", description:'some different description'}
+      event.reload
+      expect(event.name).to eq('some new name')
+      expect(event.description).to eq('some different description')
+    end
+  end
+
 end
