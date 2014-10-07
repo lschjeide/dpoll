@@ -1,19 +1,122 @@
-<h1>Add Event</h1>
-	<%= render partial: "form", locals: {event: Event.new} %>
+
+<div ng-show="showEvents" ng-app="" ng-controller="eventsController"> 
+
+<div class="hidden-xs hidden-sm">
+    <%= render "form1" %>
+</div>
+
+<div class="full-page-form" ng-show="showFullForm">
+    <%= render "form2" %>
+</div>
+
+<div class="full-page-events" ng-show="showFullList">
+
+<div class="visible-xs visible-sm">
+    <button class="add btn btn-primary btn-lg" ng-click="showForm()">Add Event</button>
+</div>
+
 <h1>Events</h1>
+
 <table class="table">
-	<tr>
-		<th>
-			Name
-		</th>
-		<th>
-			Description
-		</th>
-		<th>
-			Date
-		</th>
-	</tr>	
-<% @events.each do |event| %>
-	<%= render partial: "row", locals: {event: event} %></td>
-<% end %>
+
+	<%= render "headers" %>
+
+	<%= render "row" %>
 </table>
+</div>
+
+
+
+  <div class="full-page-event" ng-show="showFullEvent">
+    <%= render "show" %>
+  <div>
+</div>
+
+
+
+<script>
+function eventsController($scope,$http) {
+    var site = "";
+    $scope.hideSave = true;
+    $scope.hideEdit = false
+    $scope.showFullForm = false;
+    $scope.showFullList = true;
+    $scope.showFullEvent = false;
+    $scope.h1_value = "Add";
+    $scope.showEvents = true;
+    $scope.addEvent = function() {
+        var data = { event: {name: $scope.name, description: $scope.description}, "authenticity_token": "<%= form_authenticity_token %>" };
+        $http.post(site + "/events", data).success(function(data, status, headers){
+            refresh();
+            $scope.name = '';
+            $scope.description = '';
+        });
+    }
+    $scope.saveEvent = function() {
+        var data = { event: {id: $scope.event_id, name: $scope.name, description: $scope.description}, "authenticity_token": "<%= form_authenticity_token %>" };
+        $http.put(site + "/events/"+$scope.event_id, data).success(function(data, status, headers){
+            refresh();
+            $scope.event_id = '';
+            $scope.name = '';
+            $scope.description = '';
+            $scope.hideSave = true;
+            $scope.hideEdit = false;
+        });
+    }
+    $scope.editEvent = function (event_id, name, description) {
+        $scope.button_value = "Save"
+        $scope.hideSave = false;
+        $scope.hideEdit = true;
+        $scope.event_id = event_id;
+        $scope.name = name;
+        $scope.description = description;
+    }
+    $scope.deleteEvent = function (event_id) {
+        var data = { authenticity_token: "<%= form_authenticity_token %>" };
+        $http.delete(site + "/events/"+event_id+"?authenticity_token=<%= form_authenticity_token %>", data).success(function(data, status, headers){
+            refresh();
+        });
+    } 
+
+    $scope.showForm = function () {
+        $scope.showFullForm = true;
+        $scope.showFullList = false;  
+        $scope.showFullEvent = false; 
+    }
+
+    $scope.hideForm = function () {
+        $scope.showFullForm = false;
+        $scope.showFullList = true;  
+        $scope.showFullEvent = false; 
+    }
+
+    $scope.showEvent = function (event_id) {
+        var site = "";
+        var page = "/events/"+event_id+".json";
+        $http.get(site + page)
+        .success(function(response) {$scope.event = response;});
+        $scope.showFullForm = false;
+        $scope.showFullList = false;
+        $scope.showFullEvent = true;
+    }
+
+    $scope.showEvents = function () {
+        $scope.showFullForm = false;
+        $scope.showFullList = true;
+        $scope.showFullEvent = false;
+        refresh();
+    }
+
+    function refresh() {
+        var site = "";
+        var page = "/events.json";
+        $http.get(site + page)
+        .success(function(response) {$scope.events = response;});
+
+    }
+    refresh();
+}
+
+
+
+</script>

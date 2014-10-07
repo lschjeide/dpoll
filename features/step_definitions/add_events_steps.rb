@@ -4,9 +4,13 @@ When(/^I go to the events page$/) do
    visit "/events" 
 end
 
-When(/^I fill in '(.*)' with '(.*)'$/) do |field_name, field_value|
-  find(:fillable_field, field_name)
-  fill_in field_name, with: field_value
+When(/^In form '(.*)' fill in '(.*)' with '(.*)'$/) do |form_name, field_name, field_value|
+  within("#{form_name}") do
+	  fill_in field_name, with: field_value
+	  click_button "Sign up"
+  end
+  # find(:fillable_field, field_name)
+  # fill_in field_name, with: field_value
 end
 
 When(/^I click on (.+)/) do |button|

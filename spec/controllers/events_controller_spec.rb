@@ -25,11 +25,6 @@ describe EventsController do
 	        expect(assigns(:event)).to be_a(Event)
 	        expect(assigns(:event)).to be_persisted
 	    end
-
-	    it "redirects to the events page" do
-	        post :create, {:event => valid_attributes}
-	        expect(response).to redirect_to(:events)
-	    end
 	end
 
 end

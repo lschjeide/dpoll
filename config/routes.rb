@@ -55,4 +55,6 @@ Dpoll::Application.routes.draw do
   #   end
   resources :events
 
+  get '/' => 'home#index'
+
 end

@@ -1,1 +1,17 @@
-<tr><td><%= event.name %></td><td><%= event.description %></td><td><%= event.event_date %></td></tr>
+
+ 	<tr ng-repeat="event in events" class="hidden-xs hidden-sm">
+		<td>{{event.name}}</td>
+        <td>{{event.description}}</td>
+        <td>{{event.event_date}}</td>
+        <td class="text-right"><button class="btn btn-warning" ng-click="editEvent(event.id, event.name, event.description)">Edit</button> <button class="btn btn-danger" ng-click="deleteEvent(event.id)">Delete</button></td>
+	</tr>
+
+	<tr ng-repeat="event in events" class="visible-xs visible-sm">
+		<td style="font-size: 20px">{{event.name}}</td>
+
+        <td class="hidden-xs">{{event.description}}</td>
+        <td style="font-size: 20px">{{event.event_date}}</td>
+        <td class="text-right">
+            <button class="btn btn-info" ng-click="showEvent(event.id)">View</button>
+        </td>
+	</tr>
