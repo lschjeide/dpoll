@@ -1,0 +1,27 @@
+<div class="visible-xs visible-sm">
+        <button class="btn btn-primary btn-lg" ng-click="showEvents()">All Events</button>
+</div>
+<h1>Event</h1>
+<table class="table">
+  <tr>
+    <td style="font-size: 20px"><strong>Name</strong></td>
+    <td style="font-size: 20px">{{event.name}}</td>
+  </tr>
+  <tr>
+    <td style="font-size: 20px"><strong>Description</strong></td>
+    <td style="font-size: 20px">{{event.description}}</td>
+  </tr>
+  <tr>
+    <td style="font-size: 20px"><strong>Date</strong></td>
+    <td style="font-size: 20px">{{event.event_date}}</td>
+  </tr>
+  <tr>
+    
+    <td class="hidden-xs hidden-sm"><button class="btn btn-warning" ng-click="editEvent(event.id, event.name, event.description)">Edit</button> <button class="btn btn-danger" ng-click="deleteEvent(event.id)">Delete</button></td>
+    <td class="visible-xs visible-sm">
+        <button class="btn btn-warning" ng-click="editEvent(event.id, event.name, event.description); showForm();">Edit</button>
+        <button class="btn btn-danger" ng-click="deleteEvent(event.id); showEvents();">Delete</button>
+    </td>
+    <td></td>
+  </tr>
+</table>
