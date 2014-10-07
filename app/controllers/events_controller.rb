@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 		end
 	end
 
-  def create
+	def create
 		@event = Event.new(params[:event])
 
 		if @event.save!
@@ -42,29 +42,7 @@ class EventsController < ApplicationController
 		else
 			render json:{errors:['Failed to delete event']}, status:422
 		end
-  end
+	end
 
-  def destroy
-    @event = Event.find(params[:id])
-
-    if @event.destroy
-      redirect_to events_path, alert: 'Event deleted'
-    else
-      redirect_to events_path, alert: 'Failed to delete event'
-    end
-  end
-
-  def update
-    @event = Event.find(params[:id])
-
-    if @event.update(name: params[:name], description: params[:description])
-      redirect_to events_path, alert: 'Event updated'
-    else
-      redirect_to events_path, alert: 'Failed to update event'
-    end
-
-  end
-
-
-  private
+	private
 end
