@@ -2,13 +2,13 @@
  	<tr ng-repeat="event in events" class="event-row hidden-xs hidden-sm">
 		<td class="event-name">{{event.name}}</td>
         <td class="event-description">{{event.description}}</td>
-        <td>{{event.event_date}}</td>
+        <td class="event-date">{{event.event_date | date:'MMM d, yyyy'}}</td>
         <td class="text-right"><button class="btn btn-warning edit-event" ng-click="editEvent(event.id, event.name, event.description)">Edit</button> <button class="btn btn-danger delete-event" ng-click="deleteEvent(event.id)">Delete</button></td>
 	</tr>
 
  	<tr ng-repeat="event in events" class="event-row visible-xs visible-sm">
 		<td class="event-name" style="font-size: 20px">{{event.name}}</td>
-        <td style="font-size: 20px">{{event.event_date}}</td>
+        <td class="event-date" style="font-size: 20px">{{event.event_date | date:'MMM d, yyyy'}}</td>
         <td class="text-right">
             <button class="btn btn-info view-event" ng-click="showEvent(event.id)">View</button>
         </td>

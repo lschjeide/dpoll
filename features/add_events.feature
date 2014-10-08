@@ -8,10 +8,11 @@ Feature: Add events
     And I click on Add
     And I fill in 'Event Name' with 'Event 1'
     And I fill in 'Description' with 'Event description'
+    And I fill in 'Date' with '2014-10-20'
     And I click on Add
     Then I should see the following events
-     | Name    | Description         |
-     | Event 1 | Event description   |  
+     | Name    | Description         | Date |
+     | Event 1 | Event description   | Oct 20, 2014    |
 
   @javascript
   Scenario: Should be able to add an event to the events page [MOBILE]
@@ -20,7 +21,8 @@ Feature: Add events
     And I click on Add
     And I fill in 'Event Name' with 'Event 1'
     And I fill in 'Description' with 'Event description'
+    And I fill in 'Date' with '2014-10-20'
     And I click on Add
     Then I should see the following events
-     | Name    | 
-     | Event 1 |
+     | Name    | Date |
+     | Event 1 | Oct 20, 2014 |

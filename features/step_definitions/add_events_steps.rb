@@ -26,12 +26,12 @@ Then(/^I should see the following events$/) do |expected_events|
 	rows = all('.event-row')
 	rows.each do |row|
 		name = row.find('.event-name').text.strip
-
+		date = row.find('.event-date').text.strip
 		if row.has_selector?('.event-description')
 			description = row.find('.event-description').text.strip
-			actual_events.push([name, description])
+			actual_events.push([name, description, date])
 		else
-			actual_events.push([name])
+			actual_events.push([name, date])
 		end	
 	end	
   	expected_events.diff! actual_events
