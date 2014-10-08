@@ -1,17 +1,20 @@
 
+
+
+
 <div ng-show="showEvents" ng-app="" ng-controller="eventsController"> 
 
-<div class="hidden-xs hidden-sm">
-    <%= render "form1" %>
+<!-- <div class="hidden-xs hidden-sm">
+    <%= render "form" %>
 </div>
-
+ -->
 <div class="full-page-form" ng-show="showFullForm">
-    <%= render "form2" %>
+    <%= render "form" %>
 </div>
 
 <div class="full-page-events" ng-show="showFullList">
 
-<div class="visible-xs visible-sm">
+<div class="">
     <button class="add btn btn-primary btn-lg" ng-click="showForm()">Add Event</button>
 </div>
 
@@ -67,6 +70,8 @@ function eventsController($scope,$http) {
         $scope.button_value = "Save"
         $scope.hideSave = false;
         $scope.hideEdit = true;
+        $scope.showFullForm = true;
+        $scope.showFullList = false;  
         $scope.event_id = event_id;
         $scope.name = name;
         $scope.description = description;
@@ -104,6 +109,8 @@ function eventsController($scope,$http) {
         $scope.showFullForm = false;
         $scope.showFullList = true;
         $scope.showFullEvent = false;
+        $scope.name = '';
+        $scope.description = '';
         refresh();
     }
 

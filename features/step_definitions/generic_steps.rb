@@ -16,3 +16,8 @@ def find_a_button name
 
   return find(".#{name.downcase.split.first}")
 end
+
+When(/^I pause$/) do
+   print "Press Return to continue ..."
+    STDIN.getc
+end
