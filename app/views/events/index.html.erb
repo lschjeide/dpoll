@@ -1,44 +1,36 @@
 
 
-
-
 <div ng-show="showEvents" ng-app="" ng-controller="eventsController"> 
 
-<!-- <div class="hidden-xs hidden-sm">
-    <%= render "form" %>
-</div>
- -->
-<div class="full-page-form" ng-show="showFullForm">
-    <%= render "form" %>
-</div>
+    <div class="full-page-form" ng-show="showFullForm">
+        <%= render "form" %>
+    </div>
 
-<div class="full-page-events" ng-show="showFullList">
+    <div class="full-page-events" ng-show="showFullList">
 
-<div class="">
-    <button class="add btn btn-primary btn-lg" ng-click="showForm()">Add Event</button>
-</div>
+        <div class="">
+            <button class="add btn btn-primary btn-lg" ng-click="showForm()">Add Event</button>
+        </div>
 
-<h1>Events</h1>
+        <h1>Events</h1>
 
-<table class="table">
+        <table class="table">
 
-	<%= render "headers" %>
+        	<%= render "headers" %>
 
-	<%= render "row" %>
-</table>
-</div>
+        	<%= render "row" %>
+        </table>
+    </div>
 
-
-
-  <div class="full-page-event" ng-show="showFullEvent">
-    <%= render "show" %>
-  <div>
+    <div class="full-page-event" ng-show="showFullEvent">
+        <%= render "show" %>
+    <div>
 </div>
 
 
 
 <script>
-function eventsController($scope,$http) {
+function eventsController($scope,$filter,$http) {
     var site = "";
     $scope.hideSave = true;
     $scope.hideEdit = false
@@ -53,6 +45,7 @@ function eventsController($scope,$http) {
             refresh();
             $scope.name = '';
             $scope.description = '';
+            $scope.event_date = '';
         });
     }
     $scope.saveEvent = function() {
@@ -62,11 +55,12 @@ function eventsController($scope,$http) {
             $scope.event_id = '';
             $scope.name = '';
             $scope.description = '';
+            $scope.event_date = '';
             $scope.hideSave = true;
             $scope.hideEdit = false;
         });
     }
-    $scope.editEvent = function (event_id, name, description) {
+    $scope.editEvent = function (event_id, name, description, event_date) {
         $scope.button_value = "Save"
         $scope.hideSave = false;
         $scope.hideEdit = true;
@@ -75,6 +69,7 @@ function eventsController($scope,$http) {
         $scope.event_id = event_id;
         $scope.name = name;
         $scope.description = description;
+        $scope.event_date = $filter('date')(event_date, 'yyyy-MM-dd');
     }
     $scope.deleteEvent = function (event_id) {
         var data = { authenticity_token: "<%= form_authenticity_token %>" };
@@ -111,6 +106,7 @@ function eventsController($scope,$http) {
         $scope.showFullEvent = false;
         $scope.name = '';
         $scope.description = '';
+        $scope.event_date = '';
         refresh();
     }
 
