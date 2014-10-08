@@ -39,7 +39,7 @@ describe EventsController do
   describe ".update" do
     it "changes stuff" do
       event = Event.create! valid_attributes
-      post :update, {id: event.id, name: "some new name", description:'some different description'}
+      put :update, :id => event.id, :event => {name: "some new name", description:'some different description'}
       event.reload
       expect(event.name).to eq('some new name')
       expect(event.description).to eq('some different description')
