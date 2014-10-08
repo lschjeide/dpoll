@@ -1,5 +1,5 @@
 
-
+<br/>
 <div ng-show="showEvents" ng-app="" ng-controller="eventsController"> 
 
     <div class="full-page-form" ng-show="showFullForm">
@@ -40,7 +40,7 @@ function eventsController($scope,$filter,$http) {
     $scope.h1_value = "Add";
     $scope.showEvents = true;
     $scope.addEvent = function() {
-        var data = { event: {name: $scope.name, description: $scope.description, event_date: $scope.event_date}, "authenticity_token": "<%= form_authenticity_token %>" };
+        var data = { event: {name: $scope.name, description: $scope.description, event_date: $scope.event_date}, "authenticity_token": "<%= form_authenticity_token.html_safe %>" };
         $http.post(site + "/events", data).success(function(data, status, headers){
             refresh();
             $scope.name = '';
@@ -49,7 +49,7 @@ function eventsController($scope,$filter,$http) {
         });
     }
     $scope.saveEvent = function() {
-        var data = { event: {id: $scope.event_id, name: $scope.name, description: $scope.description, event_date: $scope.event_date}, "authenticity_token": "<%= form_authenticity_token %>" };
+        var data = { event: {id: $scope.event_id, name: $scope.name, description: $scope.description, event_date: $scope.event_date}, "authenticity_token": "<%= form_authenticity_token.html_safe %>" };
         $http.put(site + "/events/"+$scope.event_id, data).success(function(data, status, headers){
             refresh();
             $scope.event_id = '';
@@ -73,7 +73,7 @@ function eventsController($scope,$filter,$http) {
     }
     $scope.deleteEvent = function (event_id) {
         var data = { authenticity_token: "<%= form_authenticity_token %>" };
-        $http.delete(site + "/events/"+event_id+"?authenticity_token=<%= form_authenticity_token %>", data).success(function(data, status, headers){
+        $http.delete(site + "/events/"+event_id+"?authenticity_token=<%= form_authenticity_token.html_safe %>", data).success(function(data, status, headers){
             refresh();
         });
     } 
