@@ -37,7 +37,3 @@ Then(/^I should see the following events$/) do |expected_events|
   	expected_events.diff! actual_events
   
 end
-
-Then(/^I should not see description$/) do
-   expect(page.has_selector?('.event-description-hdr')).to be false
-end

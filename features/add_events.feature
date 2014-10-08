@@ -1,7 +1,5 @@
 Feature: Add events
   In order to maintain the list of events
-  #An admin
-  #Should be able to add funds to a batch
 
   @javascript
   Scenario: Should be able to add an event to the events page [FULLSCREEN]
@@ -26,4 +24,3 @@ Feature: Add events
     Then I should see the following events
      | Name    | 
      | Event 1 |
-    And I should not see description
