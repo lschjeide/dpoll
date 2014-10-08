@@ -15,10 +15,16 @@
     <input type="text" ng-model="description" id="description" name="description"><br>
 
     <label for="event_date">Date</label><br>
-    <input type="text" ng-model="event_date" id="event_date" name="event_date">
+    <input type="text" ng-model="event_date" id="event_date" data-date-format=yyyy-mm-dd ng-placeholder="<%= Date.today %>" data-behaviour='datepicker' name="event_date">
     <br><br>
 
     <button ng-hide="hideEdit" class="btn btn-primary btn-lg" ng-click="addEvent(); showEvents();">Add</button>
     <button ng-hide="hideSave" class="btn btn-primary btn-lg" ng-click="saveEvent(); showEvents();">Save</button>
 
   </form>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({language: "en-AU", todayHighlight:true});
+  })
+</script>
