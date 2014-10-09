@@ -1,0 +1,36 @@
+<script>
+
+	var dpollModule = angular.module('dpoll', []);
+
+	dpollModule.factory("Vote", function($resource) {
+	  return $resource("/events/:event_id/votes", { event_id: "@event_id" },
+	    {
+	      'create':  { method: 'POST' }
+	    }
+	  );
+	});
+
+	dpollModule.controller('VotesController', function($scope, Vote) {
+		
+
+		$scope.init = function(eventId) {
+			$scope.eventId = eventId;
+		}
+
+		$scope.castVote = function(vote, vote_input) {
+
+			Vote.$create({fffff: vote_input}, success(function(){
+            alert("looks good!");
+        }), failure(function(){alert("no go!");}));
+
+		}
+	});
+
+</script>
+
+<div ng-app="dpoll" ng-controller="VotesController"  ng-init="init(<%= @event.id %>)"> 
+    <div>
+        <%= render "form" %>
+    </div>
+</div>
+

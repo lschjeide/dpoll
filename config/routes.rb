@@ -53,7 +53,9 @@ Dpoll::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :events
+  resources :events do
+    resources :votes, only: [:new, :create]
+  end  
 
   get '/' => 'home#index'
 
