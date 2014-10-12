@@ -1,28 +1,80 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DPoll is a small voting app that is using ruby on rails, angular and responsive mobile design.
 
-Things you may want to cover:
+User can create events and vote whether they liked/disliked the event eg dius monthly talks.
 
-* Ruby version
+=Dependencies
 
-* System dependencies
+== Ruby
 
-* Configuration
+* Install ruby version management tool.
 
-* Database creation
+Recommend rbenv https://github.com/sstephenson/rbenv
+Rvm is another tool but is messy to uninstall.
 
-* Database initialization
+* Install Ruby using your management tool and set for dpoll
+version 2.0.0-p576
 
-* How to run the test suite
+eg.
+$ rbenv install 2.0.0-p576
+$ rbenv local 2.0.0-p576
 
-* Services (job queues, cache servers, search engines, etc.)
+Check ruby version is correct in dpoll directory
+$ ruby -v
 
-* Deployment instructions
+* Install bundler
+$ gem install bundler
 
-* ...
+== Database
+* Install mysql database server
+eg. $ brew install mysql
 
+Start database
+
+mysqld
+
+= Dpoll building
+
+== Install gems
+$ bundle install
+$ bundle update (subsequent runs)
+
+== Create database
+
+Setup development database
+$ rake db:create db:migrate
+
+Setup test database
+$ rake RAILS_ENV=test db:create db:migrate
+
+Note: to see all rake tasks
+$ rake -T
+
+== Install chrome driver
+
+This is required for cucumber tests
+
+Download latest from http://chromedriver.storage.googleapis.com/index.html
+and place on your path
+
+== Run test suite
+
+* Run all specs and cukes
+
+$ rake
+
+* Run only cucumber
+
+$ rake cucumber
+
+* Run cucumber scenarios tagged with wip
+
+$ rake cucumber:wip
+
+* Run single scenario
+
+$ rake FEATURE=features/vote_event.feature cucumber
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
