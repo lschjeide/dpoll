@@ -4,3 +4,15 @@
 require File.expand_path('../config/application', __FILE__)
 
 Dpoll::Application.load_tasks
+
+task :default => [:all_tests]
+
+task :all_tests do
+  start_time = Time.now
+  begin
+    Rake::Task['db:test:prepare'].invoke
+    Rake::Task['cucumber'].invoke
+  ensure
+    puts "Total build time: #{(Time.now - start_time)/60} minutes"
+  end
+end
