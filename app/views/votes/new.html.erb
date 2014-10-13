@@ -1,5 +1,8 @@
 <div ng-app="dpoll" ng-controller="VoteCtrl" ng-init="init(<%= @event.id %>)">  
     <div>
         <%= render "form" %>
+        <div id="voting-notification" ng-show="notification">
+            <span class="poll_response">{{notification}}</span>
+        </div>
     </div>
 </div>

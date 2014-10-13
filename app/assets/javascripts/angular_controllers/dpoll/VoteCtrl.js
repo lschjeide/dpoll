@@ -3,7 +3,7 @@
 var dpollApp = angular.module('dpoll', ['ngResource']);
 
 dpollApp.factory("Vote", function ($resource) {
-    return $resource("/events/:eventId/votes/new", {eventId: '@eventId'},
+    return $resource("/events/:eventId/votes", {eventId: '@eventId'},
         {
             'create': { method: 'POST', params: {} }
         }

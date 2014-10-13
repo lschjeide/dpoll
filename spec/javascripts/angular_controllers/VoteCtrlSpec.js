@@ -23,8 +23,12 @@ describe('VoteCtrl', function () {
 
     describe('#init', function () {
 
-        it('populates event id', function () {
+        it ('populates event id', function () {
             expect(scope.eventId).toEqual(eventId);
+        });
+
+        it ('clears notification', function() {
+            expect(scope.notification).toEqual(undefined);
         });
     });
 
@@ -34,20 +38,20 @@ describe('VoteCtrl', function () {
             scope.init(eventId);
         });
 
-        it('creates a yes vote', function () {
+        it ('creates a yes vote', function () {
             var vote = 'Yes';
             scope.castVote(vote);
 
-            $httpBackend.expectPOST('/events/' + scope.eventId + '/votes/new', {'vote': vote}).respond(200);
+            $httpBackend.expectPOST('/events/' + scope.eventId + '/votes', {'vote': vote}).respond(200);
             $httpBackend.flush();
             expect(scope.notification).toEqual('Thank you for your feedback!');
         });
 
-        it('creates a no vote', function () {
+        it ('creates a no vote', function () {
             var vote = 'No';
             scope.castVote(vote);
 
-            $httpBackend.expectPOST('/events/' + scope.eventId + '/votes/new', {'vote': vote}).respond(200);
+            $httpBackend.expectPOST('/events/' + scope.eventId + '/votes', {'vote': vote}).respond(200);
             $httpBackend.flush();
             expect(scope.notification).toEqual("I'm sorry this wasn't worth your time.  Thank you for your feedback anyway!");
         });
