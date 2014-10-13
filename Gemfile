@@ -14,6 +14,8 @@ gem 'simple_form'
 
 gem 'railties', '~> 4.1'
 
+gem 'io-console'
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 
