@@ -64,4 +64,6 @@ group :development, :test do
   gem "capybara", ">= 2.0.2"
   gem "selenium-webdriver"
   gem "cucumber-rails", ">= 1.3.0", require:false
+  gem 'jasmine', '2.0.2'
+  gem 'phantomjs', '1.9.7'
 end
