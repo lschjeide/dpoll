@@ -1,38 +1,5 @@
-<script>
-
-	var dpoll = angular.module("dpoll", ['ngResource'])
-	
-	dpoll.factory("Vote", function($resource) {
-	  return $resource("/events/<%= @event.id %>/votes", {},
-	    {
-	      'create':  { method: 'POST' }
-	      // 'index':   { method: 'GET', isArray: true },
-	      // 'show':    { method: 'GET', isArray: false },
-	      // 'update':  { method: 'PUT' },
-	      // 'destroy': { method: 'DELETE' }
-	    }
-	  );
-	});
-
-	dpoll.controller('votesController', function($scope, $resource, Vote) {
-
-		$scope.init = function(eventId) {
-			$scope.eventId = eventId;
-		}
-
-        $scope.castVote = function (vote_input) {
-        	Vote.create({'vote': vote_input}, 
-        		function (result) { alert("woohoo!");},
-        		function(result){ alert("fail!");});
-    };
-
-	});
-
-</script>
-
-<div ng-app="dpoll" ng-controller="votesController"  ng-init="init(<%= @event.id %>)"> 
+<div ng-app="dpoll" ng-controller="VoteCtrl" ng-init="init(<%= @event.id %>)">  
     <div>
         <%= render "form" %>
     </div>
 </div>
-
