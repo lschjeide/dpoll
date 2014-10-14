@@ -14,9 +14,16 @@ describe VotesController do
       expect(assigns(:event)).to eq(event)
     end
 
-    it 'creates vote for an event' do
+    it 'creates success response' do
       post :create, event_id: event.id
       expect(response.status).to eql 200
+    end
+
+    it 'creates new vote' do
+      post :create, event_id: event.id, vote: 'Yes'
+
+      expect(event.votes.count).to eql 1
+      expect(event.votes.first.vote).to eql 'Yes'
     end
   end
 end	

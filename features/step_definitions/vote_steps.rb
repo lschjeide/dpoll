@@ -19,9 +19,9 @@ end
 Then(/^there should be (\d+) '(.*)' vote for event '(.*)'$/) do |num, vote, name|
   event = Event.find_by_name(name)
   if vote == "Yes"
-  	expect(event.num_yeses).to be num 
+  	expect(event.num_yeses).to eq num.to_i
   else
-  	expect(event.num_nos).to be num 
+  	expect(event.num_nos).to eq num.to_i
   end
 end
 
