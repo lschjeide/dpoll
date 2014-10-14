@@ -9,4 +9,8 @@ class VotesController < ApplicationController
     render :nothing => true, :status => 200
   end
 
+  def index
+    @event = Event.find(params[:event_id])
+  end
+
 end	
