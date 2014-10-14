@@ -21,6 +21,7 @@
     <td class="visible-xs visible-sm">
         <button class="btn btn-warning" ng-click="editEvent(event.id, event.name, event.description, event.event_date); showForm();">Edit</button>
         <button class="btn btn-danger" ng-click="deleteEvent(event.id); showEvents();">Delete</button>
+        <a class="btn btn-success" href="<%= url_for events_url %>/{{event.id}}/votes" target="_blank">Go to poll</a>
     </td>
     <td></td>
   </tr>

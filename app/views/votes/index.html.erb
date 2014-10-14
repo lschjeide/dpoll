@@ -1,6 +1,8 @@
 <div>
     <h1><%= @event.name%> poll</h1>
 
+    <p>Poll url to share: <%= link_to new_event_vote_url, new_event_vote_url, event_id: @event.id, target: "_blank" %></p>
+
     <table class="table">
         <tr>
             <th>Yes</th>

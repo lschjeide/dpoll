@@ -1,6 +1,8 @@
 <div ng-app="dpoll" ng-controller="VoteCtrl" ng-init="init(<%= @event.id %>)">
     <h1><%= @event.name %></h1>
+    <% if @event.event_date %>
     <p>Date: <%= @event.event_date.strftime('%m/%d/%Y') %></p>
+    <% end %>
     <div>
         <%= render "form" %>
         <div class="alert alert-success" ng-show="notification">
