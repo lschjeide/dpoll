@@ -1,0 +1,30 @@
+<div class="">
+    <a class="btn btn-primary btn-lg" href="#">All Events</a>
+</div>
+
+<h1>{{h1_value}} Event</h1>
+
+<form id="myForm" name="myForm" novalidate>
+  
+    
+    <input type="hidden" ng-model="event.event_id">
+    <label for="name">Event Name</label><br>
+    <input type="text" ng-model="event.name" id="name" name="name"><br>
+
+    <label for="description">Description</label><br>
+    <input type="text" ng-model="event.description" id="description" name="description"><br>
+
+    <label for="event_date">Date</label><br>
+    <input type="text" ng-model="event.event_date" id="event_date" data-date-format=yyyy-mm-dd data-behaviour='datepicker' name="event_date" value=" {{event.event_date | date:'yyyy-MM-dd'}}">
+    <br><br>
+
+    <button ng-hide="hideEdit" class="btn btn-primary btn-lg" ng-click="addEvent();">Add</button>
+    <button ng-hide="hideSave" class="btn btn-primary btn-lg" ng-click="saveEvent();">Save</button>
+
+  </form>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('[data-behaviour~=datepicker]').datepicker({language: "en-AU", todayHighlight:true});
+  })
+</script>

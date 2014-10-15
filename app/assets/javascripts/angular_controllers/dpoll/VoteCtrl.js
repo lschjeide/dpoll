@@ -1,5 +1,5 @@
 //= require angular
-
+/*
 var dpollApp = angular.module('dpoll', ['ngResource']);
 
 dpollApp.factory("Vote", function ($resource) {
@@ -30,3 +30,4 @@ dpollApp.controller('VoteCtrl', function ($scope, Vote) {
                     $scope.onSuccess(vote_value));
     };
 });
+*/

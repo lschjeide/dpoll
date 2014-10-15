@@ -1,0 +1,28 @@
+<div>
+        <a class="btn btn-primary btn-lg" href="#/events">All Events</a>
+</div>
+<h1>Event</h1>
+<table class="table">
+  <tr>
+    <td style="font-size: 20px"><strong>Name</strong></td>
+    <td style="font-size: 20px">{{event.name}}</td>
+  </tr>
+  <tr>
+    <td style="font-size: 20px"><strong>Description</strong></td>
+    <td style="font-size: 20px">{{event.description}}</td>
+  </tr>
+  <tr>
+    <td style="font-size: 20px"><strong>Date</strong></td>
+    <td style="font-size: 20px">{{event.event_date | date:'MMM d, yyyy'}}</td>
+  </tr>
+  <tr>
+    
+    <td class="hidden-xs hidden-sm"><a class="btn btn-warning" href="#/event/{{event.id}}/edit">Edit</a> <a class="btn btn-danger" href="#/event/{{event.id}}/destroy">Delete</a></td>
+    <td class="visible-xs visible-sm">
+        <a class="btn btn-warning" href="#/event/{{event.id}}/edit">Edit</a>
+        <a class="btn btn-danger"  href="#/event/{{event.id}}/destroy">Delete</a>
+        <a class="btn btn-success" href="/events/{{event.id}}/votes" target="_blank">Go to poll</a>
+    </td>
+    <td></td>
+  </tr>
+</table>

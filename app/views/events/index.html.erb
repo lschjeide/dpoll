@@ -1,5 +1,5 @@
 
-<br/>
+<!-- <br/>
 <div ng-show="showEvents" ng-app="" ng-controller="eventsController"> 
 
     <div class="full-page-form" ng-show="showFullForm">
@@ -25,12 +25,16 @@
     <div class="full-page-event" ng-show="showFullEvent">
         <%= render "show" %>
     <div>
-</div>
+</div> -->
+
+<div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
 
 
 
 <script>
-function eventsController($scope,$filter,$http) {
+/*function eventsController($scope,$filter,$http) {
     var site = "";
     $scope.hideSave = true;
     $scope.hideEdit = false
@@ -120,6 +124,6 @@ function eventsController($scope,$filter,$http) {
     refresh();
 }
 
-
+*/
 
 </script>
