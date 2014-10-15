@@ -50,8 +50,9 @@ dpollControllers.controller('EventEditCtrl', ['$scope', '$filter', '$routeParams
   	$scope.h1_value = 'Edit';
   	$scope.hideSave = false;
   	$scope.hideEdit = true;
-  	$scope.event = Event.show($routeParams);
-    $scope.event.event_date = $filter('date')($scope.event.event_date, 'yyyy-MM-dd');
+  	var item = $scope.event = Event.show($routeParams);
+  	//alert(angular.fromJson($scope.event).toString());
+    item.event_date = $filter('date')(item.event_date, 'yyyy-MM-dd');
     $scope.saveEvent = function(){
     	Event.update($scope.event);
     	$location.path( "/events" );
