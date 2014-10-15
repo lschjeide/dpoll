@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		respond_to do |format|
       		format.html
-			format.json { render json: @event }
+			format.json { render json: @event.as_json(:methods => :pretty_event_date) }
 		end
 	end
 

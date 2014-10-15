@@ -15,7 +15,7 @@
     <input type="text" ng-model="event.description" id="description" name="description"><br>
 
     <label for="event_date">Date</label><br>
-    <input type="text" ng-model="event.event_date" id="event_date" data-date-format=yyyy-mm-dd data-behaviour='datepicker' name="event_date" value=" {{event.event_date | date:'yyyy-MM-dd'}}">
+    <input type="text" ng-model="event.pretty_event_date" id="event_date" data-date-format=yyyy-mm-dd data-behaviour='datepicker' name="event_date">
     <br><br>
 
     <button ng-hide="hideEdit" class="btn btn-primary btn-lg" ng-click="addEvent();">Add</button>
