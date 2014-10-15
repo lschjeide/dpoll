@@ -8,7 +8,7 @@ describe EventsController do
    describe ".index" do
     it "shows all events" do
       event = Event.create! valid_attributes
-      get :index, {}
+      get :index, format: :json
       expect(assigns(:events)).to eq([event])
     end
   end
