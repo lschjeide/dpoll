@@ -90,6 +90,16 @@ $ rake jasmine
 
 $ rake jasmine:ci
 
+== Run against unicorn (web server)
+
+* run unicorn
+
+$ bundle exec unicorn
+
+* run unicorn against production
+
+$ bundle exec unicorn -E production
+
 
 
 
