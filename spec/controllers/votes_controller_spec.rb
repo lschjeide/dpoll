@@ -30,16 +30,5 @@ describe VotesController do
     end
   end
 
-  describe '.index' do
-    it 'renders index view' do
-      get :index, event_id: event.id
-      expect(response.status).to eql 200
-    end
 
-    it 'populates event' do
-      get :index, event_id: event.id
-      expect(assigns(:event)).to eq(event)
-    end
-
-  end
 end	

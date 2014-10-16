@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require bootstrap-datepicker
 //= require angular
 //= require angular-route
 //= require angular-resource
-//= require_tree ./angular_controllers/
+

@@ -42,5 +42,10 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def results
+		@event = Event.find(params[:id])
+		render :json => @event.as_json(:methods => [:num_yeses, :num_nos]) 
+	end
+
 	private
 end

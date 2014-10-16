@@ -54,8 +54,10 @@ Dpoll::Application.routes.draw do
   #     resources :products
   #   end
   resources :events, :defaults => {:format => "json"} do
-    resources :votes, only: [:new, :create, :index]
+    resources :votes, :defaults => {:format => "json"}, only: [:new, :create, :index]
   end  
+
+  get '/event/:id/results' => 'events#results'
 
   get '/' => 'home#index'
 

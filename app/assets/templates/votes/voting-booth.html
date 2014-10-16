@@ -1,0 +1,10 @@
+<div>
+    <a class="btn btn-primary btn-lg" href="#/events">All Events</a>
+</div>
+
+<div id="voting-form">
+    <p>Did you enjoy this event ? </p>
+    <input type="hidden" ng-model="eventId"/>
+    <button class="btn btn-primary btn-lg btn-success" ng-click="castVote('Yes')">Yes</button>
+    <button class="btn btn-primary btn-lg btn-danger" ng-click="castVote('No')">No</button>
+</div>

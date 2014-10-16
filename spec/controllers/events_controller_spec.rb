@@ -4,6 +4,7 @@ require 'rails_helper'
 describe EventsController do
 
 	let(:valid_attributes) { { name: "some name", description:'some description' } }
+  let(:event) { Event.create! {} }
 
    describe ".index" do
     it "shows all events" do
@@ -44,6 +45,19 @@ describe EventsController do
       expect(event.name).to eq('some new name')
       expect(event.description).to eq('some different description')
     end
+  end
+
+  describe '.results' do
+    it 'renders index view' do
+      get :results, {:id => event.id}
+      expect(response.status).to eql 200
+    end
+
+    it 'populates event' do
+      get :results, {:id => event.id}
+      expect(assigns(:event)).to eq(event)
+    end
+
   end
 
 end

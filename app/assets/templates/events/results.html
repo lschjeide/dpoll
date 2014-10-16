@@ -1,0 +1,18 @@
+<div>
+        <a class="btn btn-primary btn-lg" href="#/events">All Events</a>
+</div>
+
+<div>
+    <h1>{{event.name}} poll {{name}}</h1>
+
+    <table class="table">
+        <tr>
+            <th>Yes</th>
+            <th>No</th>
+        </tr>
+        <tr>
+            <td id="yes-votes">{{event.num_yeses}}</td>
+            <td id="no-votes">{{event.num_nos}}</td>
+        </tr>
+    </table>
+</div>
