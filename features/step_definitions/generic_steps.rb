@@ -21,3 +21,8 @@ When(/^I pause$/) do
    print "Press Return to continue ..."
     STDIN.getc
 end
+
+When(/^I wait a moment$/) do 
+
+  sleep(1)
+end

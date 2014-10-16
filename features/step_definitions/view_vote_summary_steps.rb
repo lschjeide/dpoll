@@ -18,7 +18,7 @@ end
 
 And(/^I view votes for '(.*)'$/) do |name|
   event = Event.find_by_name(name)
-  visit "/events/#{event.id}/votes"
+  visit "#/event/#{event.id}/results"
 end
 
 Then(/^I should see the following votes$/) do |expected_votes|

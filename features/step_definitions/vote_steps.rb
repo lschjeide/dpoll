@@ -1,7 +1,7 @@
 
 Given(/^I go to vote for '(.*)'$/) do |name|
   event = Event.find_by_name(name)
-  visit "/events/#{event.id}/votes/new"
+  visit "#/event/#{event.id}/vote/booth"
 end
 
 When(/^I vote '(.*)'$/) do |vote|

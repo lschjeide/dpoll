@@ -8,7 +8,7 @@ When(/^I resize window to small$/) do
 end
 
 When(/^I go to the events page$/) do
-   visit "/events" 
+   visit "/" 
 end
 
 When(/^I fill in '(.*)' with '(.*)'$/) do |field_name, field_value|

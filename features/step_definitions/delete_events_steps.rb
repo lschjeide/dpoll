@@ -5,5 +5,5 @@ end
 
 When(/^I view and delete the event '(.*)'$/) do |name|
   click_event_button name, '.view-event'
-  click_button('Delete')
+  click_link('Delete')
 end

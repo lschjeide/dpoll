@@ -44,7 +44,7 @@ dpollApp.config(['$routeProvider',
         templateUrl: 'assets/votes/voting-booth.html',
         controller: 'VoteBoothCtrl'
       }).
-      when('/event/:eventId/vote/response', {
+      when('/event/:eventId/vote/:id/response', {
         templateUrl: 'assets/votes/voting-response.html',
         controller: 'VoteResponseCtrl'
       }).

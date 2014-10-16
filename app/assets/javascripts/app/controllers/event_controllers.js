@@ -37,8 +37,12 @@ eventControllers.controller('EventDetailCtrl', ['$scope', '$routeParams', 'Event
 
 eventControllers.controller('EventDestroyCtrl', ['$scope', '$location', '$routeParams', 'Event',
   function($scope, $location, $routeParams, Event) {
-    $scope.event = Event.destroy($routeParams);
-    $location.path( "/events" );
+    $scope.event = Event.destroy($routeParams,
+          function(data, status, headers, config) {
+            $location.path( "/events" );
+          }
+    );
+    
   }]);
 
 eventControllers.controller('EventNewCtrl', ['$scope', '$filter', '$location', 'Event',
@@ -47,8 +51,11 @@ eventControllers.controller('EventNewCtrl', ['$scope', '$filter', '$location', '
   	$scope.hideSave = true;
   	$scope.hideEdit = false;
     $scope.addEvent = function(){
-    	Event.create($scope.event);
-    	$location.path( "/events" );
+    	Event.create($scope.event,
+          function(data, status, headers, config) {
+            $location.path( "/events" );
+          }
+      );
     }
   }]);
 
@@ -59,7 +66,10 @@ eventControllers.controller('EventEditCtrl', ['$scope', '$filter', '$routeParams
   	$scope.hideEdit = true;
   	$scope.event = Event.show($routeParams);
     $scope.saveEvent = function(){
-    	Event.update($scope.event);
-    	$location.path( "/events" );
+    	Event.update($scope.event,
+          function(data, status, headers, config) {
+            $location.path( "/events" );
+          }
+      );
     }
   }]);

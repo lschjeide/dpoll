@@ -8,5 +8,5 @@ end
 
 When(/^I view and edit the event '(.*)'$/) do |name|
   click_event_button name, '.view-event'
-  click_button('Edit')
+  click_link('Edit')
 end
