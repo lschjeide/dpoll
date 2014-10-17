@@ -32,7 +32,11 @@ eventControllers.controller('EventListCtrl', ['$scope', 'Event',
 
 eventControllers.controller('EventDetailCtrl', ['$scope', '$routeParams', 'Event',
   function($scope, $routeParams, Event) {
-    $scope.event = Event.show($routeParams);
+    Event.show($routeParams, 
+        function(data, status, headers, config) {
+            $scope.event = data;
+          }
+    );
   }]);
 
 eventControllers.controller('EventDestroyCtrl', ['$scope', '$location', '$routeParams', 'Event',
@@ -45,8 +49,8 @@ eventControllers.controller('EventDestroyCtrl', ['$scope', '$location', '$routeP
     
   }]);
 
-eventControllers.controller('EventNewCtrl', ['$scope', '$filter', '$location', 'Event',
-  function($scope, $filter, $location, Event) {
+eventControllers.controller('EventNewCtrl', ['$scope', '$location', 'Event',
+  function($scope, $location, Event) {
   	$scope.h1_value = 'Add';
   	$scope.hideSave = true;
   	$scope.hideEdit = false;
@@ -59,15 +63,20 @@ eventControllers.controller('EventNewCtrl', ['$scope', '$filter', '$location', '
     }
   }]);
 
-eventControllers.controller('EventEditCtrl', ['$scope', '$filter', '$routeParams', '$location', 'Event',
-  function($scope, $filter, $routeParams, $location, Event) {
+eventControllers.controller('EventEditCtrl', ['$scope', '$routeParams', '$location', 'Event',
+  function($scope, $routeParams, $location, Event) {
   	$scope.h1_value = 'Edit';
   	$scope.hideSave = false;
   	$scope.hideEdit = true;
-  	$scope.event = Event.show($routeParams);
+  	Event.show($routeParams, 
+        function(data, status, headers, config) {
+            $scope.event = data;
+          }
+    );
     $scope.saveEvent = function(){
     	Event.update($scope.event,
           function(data, status, headers, config) {
+            $scope.event = data;
             $location.path( "/events" );
           }
       );
