@@ -17,5 +17,7 @@
 
 /.idea
 
+/chef/.vagrant
+
 /public/assets
 
