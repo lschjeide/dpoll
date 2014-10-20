@@ -26,6 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  config.vm.provision "shell", inline: "curl -L https://www.opscode.com/chef/install.sh | bash"
+
   config.vm.provision "chef_solo" do |chef|
     config.vm.provision "chef_solo" do |chef|
       chef.add_recipe "cook_dpoll"
