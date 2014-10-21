@@ -1,2 +1,2 @@
-file_cache_path "/tmp/chef-repo/chef-solo"
-cookbook_path "/tmp/chef-repo/cookbooks"
+file_cache_path "/vagrant/chef-solo"
+cookbook_path "/vagrant/cookbooks"
