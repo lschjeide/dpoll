@@ -100,6 +100,67 @@ $ bundle exec unicorn
 
 $ bundle exec unicorn -E production
 
+= Chef
+
+* Install chef
+
+$ curl -L https://www.opscode.com/chef/install.sh | bash
+
+* Install chefdk (required for bershelf)
+http://getchef.com/downloads/chef-dk
+
+= Vagrant
+
+== Installation
+
+* Install vagrant
+
+https://www.vagrantup.com/downloads.html
+
+== Plugins
+
+* Install vagrant omnibus
+$ cd ~
+$ vagrant plugin install vagrant-omnibus
+
+* Install vagrant vm workstation
+$ vagrant plugin install vagrant-vmware-workstation
+
+* Install vagrant host manager
+$ vagrant plugin install vagrant-hostmanager
+
+* Install vagrant berkshelf
+$ vagrant plugin install vagrant-berkshelf
+
+=== vagrant-omnibus              1.4.1
+
+* A Vagrant plugin that ensures the desired version of Chef is installed via the platform-specific Omnibus packages.
+* Available as a vagrant plugin install
+* Open a ConEMU shell and install with the following commands.  It will take a while.
+* Install Vagrant Omnibus Plugin
+* vagrant plugin install vagrant-omnibus
+* Website: https://github.com/schisamo/vagrant-omnibus
+* Full List of Vagrant Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+
+=== vagrant-hostmanager     1.5.0
+A Vagrant plugin that manages the /etc/hosts file on guests within a multi-machine environment
+Available as a vagrant plugin install
+Open a ConEMU shell and install with the following commands.  It will take a while.
+Install Vagrant Hostmanager Plugin
+vagrant plugin install vagrant-hostmanager
+Website: https://github.com/smdahlen/vagrant-hostmanager
+Full List of Vagrant Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+
+vagrant-berkshelf           2.0.1
+A Vagrant plugin to add Berkshelf integration to the Chef provisioners
+Available as a vagrant plugin install
+Open a ConEMU shell and install with the following commands.  It will take a while.
+Install Vagrant Berkshelf Plugin
+vagrant plugin install vagrant-berkshelf
+Website: https://github.com/berkshelf/vagrant-berkshelf
+Full List of Vagrant Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+Plugin: If plugin "vagrant-berkshelf" doesn't work with version 2.0.1, try getting the latest version with "vagrant plugin install vagrant-berkshelf"
+
 
 
 
