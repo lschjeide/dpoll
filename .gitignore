@@ -18,6 +18,7 @@
 /.idea
 
 /chef/.vagrant
+/chef/chef-solo
 
 /public/assets
 
