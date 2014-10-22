@@ -33,6 +33,7 @@
 #
 # And/or per server (overrides global)
 # ------------------------------------
+
 server '54.66.195.210',
   user: 'ec2-user',
   roles: %w{web app},

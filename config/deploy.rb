@@ -39,6 +39,7 @@ set :deploy_via, :copy
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -57,6 +58,14 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+
+# TODO ON THE BOX AFTER COPY
+
+# bundle install --deployment
+# bundle exec rake db:migrate RAILS_ENV=production
+# bundle exec unicorn_rails --env production --daemonize
+
+      
     end
   end
 
