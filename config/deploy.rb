@@ -66,7 +66,7 @@ namespace :deploy do
          execute "rm -f /home/ec2-user/unicorn"
          execute "ln -s #{release_path} /home/ec2-user/unicorn"
          execute "/sbin/service unicorn start"
-         execute "chown -R ec2-user:ec2-user *"
+         execute :sudo, "chown -R ec2-user:ec2-user *"
        end
     end
   end
