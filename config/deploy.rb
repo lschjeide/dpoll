@@ -5,7 +5,7 @@ set :application, 'dpoll'
 
 set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 set :branch, 'origin/master'
-set :keep_releases, 20  #After several years manually use: cap deploy:cleanup -s keep_releases=1
+set :keep_releases, 20   #After several years manually use: cap deploy:cleanup -s keep_releases=1
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
