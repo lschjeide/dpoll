@@ -46,7 +46,7 @@
 
 set :rails_env, "testprod"
 
-server 'dpoll.test.dius.com.au',
+server 'testdpoll.test.dius.com.au',
   user: 'ec2-user',
   roles: %w{web app},
   ssh_options: {
