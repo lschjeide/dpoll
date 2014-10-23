@@ -62,6 +62,7 @@ namespace :deploy do
       # Here we can do anything such as:
        within release_path do
          execute :bundle, 'install --deployment'
+         execute "pwd"
          execute "bundle exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
          execute "/sbin/service unicorn stop"
          execute "rm -f /home/ec2-user/unicorn"
