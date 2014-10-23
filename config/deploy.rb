@@ -3,7 +3,7 @@ lock '3.2.1'
 
 set :application, 'dpoll'
 
-#set :repo_url, 'https://github.com/lschjeide/dpoll.git'
+set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
