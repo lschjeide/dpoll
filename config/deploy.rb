@@ -5,6 +5,7 @@ set :application, 'dpoll'
 
 set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 set :branch, 'origin/master'
+set :keep_releases, 999999
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -66,7 +67,6 @@ namespace :deploy do
          execute "rm -f /home/ec2-user/unicorn"
          execute "ln -s #{release_path} /home/ec2-user/unicorn"
          execute "/sbin/service unicorn start"
-         execute :sudo, "chown -R ec2-user:ec2-user *"
        end
     end
   end
