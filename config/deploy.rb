@@ -15,6 +15,8 @@ set :deploy_to, '/tmp'
 set :scm, :gitcopy
 set :deploy_via, :copy
 
+set :stages, %w(test production)
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -40,6 +42,7 @@ set :deploy_via, :copy
 # set :keep_releases, 5
 
 
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -55,9 +58,12 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+       within release_path do
+         execute :bundle, 'install --deployment'
+         execute :rake, "db:migrate RAILS_ENV=#{fetch(:rails_env)}"
+         execute :bundle, "unicorn_rails --env #{fetch(:rails_env)} --daemonize"
+         execute "ln -s #{release_path} /home/ec2-user/unicorn"
+       end
 
 # TODO ON THE BOX AFTER COPY
 
@@ -65,7 +71,7 @@ namespace :deploy do
 # bundle exec rake db:migrate RAILS_ENV=production
 # bundle exec unicorn_rails --env production --daemonize
 
-      
+
     end
   end
 
