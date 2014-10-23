@@ -3,7 +3,7 @@ lock '3.2.1'
 
 set :application, 'dpoll'
 
-set :repo_url, 'https://github.com/lschjeide/dpoll.git'
+#set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -61,8 +61,10 @@ namespace :deploy do
        within release_path do
          execute :bundle, 'install --deployment'
          execute :rake, "db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-         execute :bundle, "unicorn_rails --env #{fetch(:rails_env)} --daemonize"
+         execute "/sbin/service unicorn stop"
+         execute "rm -f /home/ec2-user/unicorn"
          execute "ln -s #{release_path} /home/ec2-user/unicorn"
+         execute "/sbin/service unicorn start"
        end
 
 # TODO ON THE BOX AFTER COPY
