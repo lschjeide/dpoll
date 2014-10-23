@@ -35,7 +35,7 @@
 # ------------------------------------
 set :rails_env, "production"
 
-server 'dpoll.test.dius.com.au',
+server 'dpoll.production.dius.com.au',
   user: 'ec2-user',
   roles: %w{web app},
   ssh_options: {

@@ -31,3 +31,13 @@ production:
   username: master_sql
   password: asdf1234
   timeout: 5000
+
+testprod:
+  host: dpolldata.cy0jiebct3t0.ap-southeast-2.rds.amazonaws.com
+  port: 3306
+  adapter: mysql2
+  database: dpoll_testprod
+  pool: 10
+  username: master_sql
+  password: asdf1234
+  timeout: 5000

@@ -5,7 +5,7 @@ set :application, 'dpoll'
 
 set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 set :branch, 'origin/master'
-set :keep_releases, 999999
+set :keep_releases, 999999 #After several years manually use: cap deploy:cleanup -s keep_releases=1
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -17,7 +17,7 @@ set :deploy_to, '/tmp'
 set :scm, :gitcopy
 set :deploy_via, :copy
 
-set :stages, %w(test production)
+set :stages, %w(testprod production)
 
 # Default value for :scm is :git
 # set :scm, :git

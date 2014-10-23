@@ -44,8 +44,7 @@
 #     # password: 'please use keys'
 #   }
 
-set :rails_env, "test"
-frog = "test"
+set :rails_env, "testprod"
 
 server 'dpoll.test.dius.com.au',
   user: 'ec2-user',
