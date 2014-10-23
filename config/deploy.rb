@@ -66,15 +66,8 @@ namespace :deploy do
          execute "rm -f /home/ec2-user/unicorn"
          execute "ln -s #{release_path} /home/ec2-user/unicorn"
          execute "/sbin/service unicorn start"
+         execute "chown -R ec2-user:ec2-user *"
        end
-
-# TODO ON THE BOX AFTER COPY
-
-# bundle install --deployment
-# bundle exec rake db:migrate RAILS_ENV=production
-# bundle exec unicorn_rails --env production --daemonize
-
-
     end
   end
 
