@@ -29,7 +29,7 @@ set :stages, %w(testprod production)
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
@@ -59,15 +59,13 @@ namespace :deploy do
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
        within release_path do
          execute :bundle, 'install --deployment'
-         execute "pwd"
          execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-         execute "/sbin/service unicorn stop"
+         execute "sudo /sbin/service unicorn stop"
          execute "rm -f /home/ec2-user/unicorn"
          execute "ln -s #{release_path} /home/ec2-user/unicorn"
-         execute "/sbin/service unicorn start"
+         execute "sudo /sbin/service unicorn start"
        end
     end
   end
