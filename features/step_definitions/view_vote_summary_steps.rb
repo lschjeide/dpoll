@@ -22,14 +22,7 @@ And(/^I view votes for '(.*)'$/) do |name|
 end
 
 Then(/^I should see the following votes$/) do |expected_votes|
-  # |Yes | No |
-
-  actual_votes = [expected_votes.raw.first]
-
-  actual_yeses = find('#yes-votes').text.strip
-  actual_nos = find('#no-votes').text.strip
-
-  actual_votes.push([actual_yeses, actual_nos])
-
-  expected_votes.diff! actual_votes
+  rows = find("table").all('tr')
+  table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
+  expected_votes.diff!(table)
 end

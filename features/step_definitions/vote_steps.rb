@@ -13,7 +13,7 @@ When(/^I vote '(.*)'$/) do |vote|
 end
 
 Then(/^I should be thanked for my feedback$/) do
-   expect(page.find('.poll_response').text.strip).to eq "Thank you for your feedback!"
+   expect(page.find('.poll_response')).to have_content "Thank you for your feedback!"
 end
 
 Then(/^there should be (\d+) '(.*)' vote for event '(.*)'$/) do |num, vote, name|
@@ -26,5 +26,5 @@ Then(/^there should be (\d+) '(.*)' vote for event '(.*)'$/) do |num, vote, name
 end
 
 Then(/^I should be thanked remorsefully for my feedback$/) do
-   expect(page.find('.poll_response').text.strip).to eq "I'm sorry this wasn't worth your time. Thank you for your feedback anyway!"
+   expect(page.find('.poll_response')).to have_content "I'm sorry this wasn't worth your time. Thank you for your feedback anyway!"
 end
