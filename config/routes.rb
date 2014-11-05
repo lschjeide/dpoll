@@ -39,7 +39,7 @@ Dpoll::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
@@ -53,9 +53,9 @@ Dpoll::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :events, :defaults => {:format => "json"} do
-    resources :votes, :defaults => {:format => "json"}, only: [:new, :create, :show]
-  end  
+  resources :events, defaults: { format: 'json' } do
+    resources :votes, defaults: { format: 'json' }, only: [:new, :create, :show]
+  end
 
   get '/event/:id/results' => 'events#results'
 

@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   respond_to :json
-  skip_before_filter  :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
 
   def new
     @event = Event.find(params[:event_id])
@@ -8,12 +8,12 @@ class VotesController < ApplicationController
 
   def create
     event = Event.find(params[:event_id])
-    vote = Vote.new :vote => params[:vote]
+    vote = Vote.new vote: params[:vote]
     event.votes.push vote
     if event.save!
-      render json: vote, status:200
+      render json: vote, status: 200
     else
-      render json:{errors:['Failed to add vote']}, status:422
+      render json: { errors: ['Failed to add vote'] }, status: 422
     end
   end
 
@@ -24,5 +24,4 @@ class VotesController < ApplicationController
       format.json { render json: @vote }
     end
   end
-
-end	
+end

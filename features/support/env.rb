@@ -11,11 +11,11 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
-Before do |scenario|
-  #Rails.logger.debug "Starting scenario: #{scenario.title}"
+Before do |_scenario|
+  # Rails.logger.debug "Starting scenario: #{scenario.title}"
 end
 
 # Possible values are :truncation and :transaction
@@ -33,7 +33,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 require "#{Rails.root}/db/seeds.rb"
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 Capybara.javascript_driver = :chrome
 Capybara.default_wait_time = 5

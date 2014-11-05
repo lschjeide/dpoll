@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -48,17 +48,18 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.2.0'
-gem "capistrano-scm-gitcopy"
+gem 'capistrano-scm-gitcopy'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem "database_cleaner", ">= 0.9.1"
+  gem 'database_cleaner', '>= 0.9.1'
   gem 'rspec-rails', '~> 3.0.0'
-  gem "capybara", ">= 2.0.2"
-  gem "selenium-webdriver"
-  gem "cucumber-rails", ">= 1.3.0", require:false
+  gem 'capybara', '>= 2.0.2'
+  gem 'selenium-webdriver'
+  gem 'cucumber-rails', '>= 1.3.0', require: false
   gem 'jasmine', '2.0.2'
   gem 'phantomjs', '1.9.7'
+  gem 'rubocop', require: false
 end

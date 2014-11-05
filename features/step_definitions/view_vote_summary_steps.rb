@@ -8,12 +8,12 @@ And(/^event '(.*)' has the following votes$/) do |name, votes|
   create_votes event, vote, 'No'
 end
 
-def create_votes event, vote, value
+def create_votes(event, vote, value)
   num_votes = vote[value.downcase.to_sym].to_i
 
-  num_votes.times {
+  num_votes.times do
     event.votes.push Vote.create!(vote: value)
-  }
+  end
 end
 
 And(/^I view votes for '(.*)'$/) do |name|
@@ -22,7 +22,7 @@ And(/^I view votes for '(.*)'$/) do |name|
 end
 
 Then(/^I should see the following votes$/) do |expected_votes|
-  rows = find("table").all('tr')
+  rows = find('table').all('tr')
   table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
   expected_votes.diff!(table)
 end

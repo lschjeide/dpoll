@@ -1,4 +1,4 @@
-def find_a_button name
+def find_a_button(name)
   begin
     return find_button(name)
   rescue
@@ -14,15 +14,15 @@ def find_a_button name
   rescue
   end
 
-  return find(".#{name.downcase.split.first}")
+  find(".#{name.downcase.split.first}")
 end
 
 When(/^I pause$/) do
-   print "Press Return to continue ..."
-    STDIN.getc
+  print 'Press Return to continue ...'
+  STDIN.getc
 end
 
-When(/^I wait a moment$/) do 
+When(/^I wait a moment$/) do
 
   sleep(1)
 end

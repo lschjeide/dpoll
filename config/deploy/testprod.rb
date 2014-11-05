@@ -8,15 +8,13 @@
 # role :web, %w{deploy@example.com}
 # role :db,  %w{deploy@example.com}
 
-
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-#server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-
+# server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
 # Custom SSH Options
 # ==================
@@ -44,16 +42,15 @@
 #     # password: 'please use keys'
 #   }
 
-set :rails_env, "testprod"
+set :rails_env, 'testprod'
 
 server 'testdpoll.test.dius.com.au',
-  user: 'ec2-user',
-  roles: %w{web app},
-  ssh_options: {
-    user: 'ec2-user', # overrides user setting above
-    keys: %w(~/.ssh/jenkins-slave-key),
-    forward_agent: false,
-    auth_methods: %w(publickey password)
-    # password: 'please use keys'
-  }
-
+       user: 'ec2-user',
+       roles: %w(web app),
+       ssh_options: {
+         user: 'ec2-user', # overrides user setting above
+         keys: %w(~/.ssh/jenkins-slave-key),
+         forward_agent: false,
+         auth_methods: %w(publickey password)
+         # password: 'please use keys'
+       }

@@ -5,12 +5,12 @@ class Event < ActiveRecord::Base
 
   def pretty_event_date
     if event_date
-  	 event_date.strftime("%Y-%m-%d")
+      event_date.strftime('%Y-%m-%d')
     end
   end
 
   def pretty_event_date=(new_value)
-  	self.event_date = new_value
+    self.event_date = new_value
   end
 
   def num_yeses
