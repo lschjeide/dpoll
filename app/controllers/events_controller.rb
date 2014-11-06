@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  #  before_action :authenticate_user!, only: [:create, :update, :destroy]
   respond_to :json
 
   def index

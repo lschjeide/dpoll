@@ -46,6 +46,9 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Use devise as a user authentication system.
+gem 'devise'
+
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.2.0'
 gem 'capistrano-scm-gitcopy'
