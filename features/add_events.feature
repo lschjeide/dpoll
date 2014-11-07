@@ -3,7 +3,8 @@ Feature: Add events
 
   @javascript
   Scenario: Should be able to add an event to the events page [FULLSCREEN]
-    When I go to the events page
+    When I am logged in
+    And I go to the events page
     And I resize window to large
     And I click on Add
     And I fill in 'Event Name' with 'Event 1'
@@ -16,7 +17,8 @@ Feature: Add events
 
   @javascript
   Scenario: Should be able to add an event to the events page [MOBILE]
-    When I go to the events page
+    When I am logged in
+    And I go to the events page
     And I resize window to small
     And I click on Add
     And I fill in 'Event Name' with 'Event 1'

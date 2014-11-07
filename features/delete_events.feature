@@ -2,7 +2,8 @@ Feature: Delete events
   In order to destroy to events
 
   Background:
-  	Given the following events exist
+  	Given I am logged in
+    And the following events exist
   	 | name    | description         | event_date |
      | Event 1 | Event description   |            |
      | Event 2 | Event nondescription|            |

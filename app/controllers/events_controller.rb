@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  #  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_filter :check_auth!, only: [:create, :update, :destroy]
   respond_to :json
 
   def index
@@ -49,4 +49,8 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def check_auth!
+    render json: { errors: ['User not Authorized'] }, status: 403 unless user_signed_in?
+  end
 end

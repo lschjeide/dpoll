@@ -2,7 +2,8 @@ Feature: Edit events
   In order to make changes to events
 
   Background:
-  	Given the following events exist
+  	Given I am logged in
+    And the following events exist
   	 | name    | description         | event_date |
      | Event 1 | Event description   | 2014-10-07 |
      | Event 2 | Event nondescription| 2014-10-14 |

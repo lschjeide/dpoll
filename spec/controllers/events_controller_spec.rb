@@ -15,6 +15,13 @@ describe EventsController do
   end
 
   describe '.create' do
+    before(:each) do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      user = User.create!(email: 'hobo@nowhere.com', password: 'blankblank')
+      user.save!
+      sign_in user
+    end
+
     it 'creates an event' do
       expect do
         post :create, event: valid_attributes
@@ -28,6 +35,13 @@ describe EventsController do
   end
 
   describe '.delete' do
+    before(:each) do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      user = User.create!(email: 'hobo@nowhere.com', password: 'blankblank')
+      user.save!
+      sign_in user
+    end
+
     it 'destroys the requested event' do
       event = Event.create! valid_attributes
       expect do
@@ -37,6 +51,13 @@ describe EventsController do
   end
 
   describe '.update' do
+    before(:each) do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      user = User.create!(email: 'hobo@nowhere.com', password: 'blankblank')
+      user.save!
+      sign_in user
+    end
+
     it 'changes stuff' do
       event = Event.create! valid_attributes
       put :update, id: event.id, event: { name: 'some new name', description: 'some different description' }
