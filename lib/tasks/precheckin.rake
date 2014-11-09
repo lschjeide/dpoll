@@ -5,11 +5,11 @@ task precheckin: :environment do |_task|
   begin
     puts '------------ Running precheckin task'
     ENV['RAILS_ENV'] = 'test'
+    Rake::Task['db:test:prepare'].invoke
+    Rake::Task['db:migrate'].invoke
     Rake::Task['rubocop'].invoke
     Rake::Task['spec'].invoke
     Rake::Task['jasmine:ci'].invoke
-    Rake::Task['db:test:prepare'].invoke
-    Rake::Task['db:migrate'].invoke
     Rake::Task['cucumber'].invoke
     puts 'Congratulations, you can check in your code : )'
   ensure
