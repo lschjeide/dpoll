@@ -57,6 +57,8 @@
 # EOF`
 # echo $SERVER_FILE > config/deploy/testprod.rb
 
+include Capistrano::Configuration::Actions::Inspect
+
 server_name = capture("aws ec2 describe-instances   --region=ap-southeast-2   --filter 'Name=tag:Live,Values=true'   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text")
 
 puts "HEY SERVER NAME!!! #{server_name}"
