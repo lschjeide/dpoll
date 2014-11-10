@@ -43,7 +43,7 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-server "#{ENV['REMOTE_HOST_NAME']}",
+server %w(~/live_server),
        user: 'ec2-user',
        roles: %w(web app),
        ssh_options: {
@@ -69,7 +69,7 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
-        execute "echo #{ENV['REMOTE_HOST_NAME']}"
+        execute "echo live server %w(~/live_server)"
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
         execute "echo #{fetch(:rails_env)} > /tmp/unicorn_environment"
