@@ -31,9 +31,14 @@
 #
 # And/or per server (overrides global)
 # ------------------------------------
+
+server_name = `aws ec2 describe-instances   --region=ap-southeast-2   --filter 'Name=tag:Live,Values=prodlive'   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text`
+
+server_name.chop!
+
 set :rails_env, 'production'
 
-server 'dpoll.test.dius.com.au',
+server "#{server_name}",
        user: 'ec2-user',
        roles: %w(web app),
        ssh_options: {
