@@ -159,7 +159,7 @@ Install Vagrant Berkshelf Plugin
 vagrant plugin install vagrant-berkshelf
 Website: https://github.com/berkshelf/vagrant-berkshelf
 Full List of Vagrant Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
-Plugin: If plugin "vagrant-berkshelf" doesn't work with version 2.0.1, try getting the latest version with "vagrant plugin install vagrant-berkshelf"
+Plugin: If plugin "vagrant-berkshelf" doesn't work with version 2.0.1, try getting the latest version with "vagrant plugin install vagrant-berkshelf" 
 
 
 
