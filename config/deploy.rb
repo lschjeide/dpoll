@@ -54,7 +54,6 @@ server "#{ENV['REMOTE_HOST_NAME']}",
          # password: 'please use keys'
        }
 
-
 namespace :deploy do
 
   desc 'Restart application'
