@@ -42,9 +42,28 @@
 #     # password: 'please use keys'
 #   }
 
+# LIVE_SERVER=$(aws ec2 describe-instances   --region=ap-southeast-2   --filter "Name=tag:Live,Values=true"   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text)
+# SERVER_FILE=`cat <<EOF
+# set :rails_env, 'testprod'
+# server '$LIVE_SERVER',
+#        user: 'ec2-user',
+#        roles: %w(web app),
+#        ssh_options: {
+#          user: 'ec2-user',
+#          keys: %w(~/.ssh/jenkins-slave-key),
+#          forward_agent: false,
+#          auth_methods: %w(publickey password)
+#        }
+# EOF`
+# echo $SERVER_FILE > config/deploy/testprod.rb
+
+server_name = capture("aws ec2 describe-instances   --region=ap-southeast-2   --filter "Name=tag:Live,Values=true"   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text")
+
+puts "HEY SERVER NAME!!! #{server_name}"
+
 set :rails_env, 'testprod'
 
-server '1.2.3.4',
+server "#{server_name}",
        user: 'ec2-user',
        roles: %w(web app),
        ssh_options: {
