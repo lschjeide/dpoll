@@ -43,17 +43,6 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-server %w(~/live_server),
-       user: 'ec2-user',
-       roles: %w(web app),
-       ssh_options: {
-         user: 'ec2-user', # overrides user setting above
-         keys: %w(~/.ssh/jenkins-slave-key),
-         forward_agent: false,
-         auth_methods: %w(publickey password)
-         # password: 'please use keys'
-       }
-
 namespace :deploy do
 
   desc 'Restart application'
