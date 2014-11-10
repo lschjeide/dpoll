@@ -44,7 +44,7 @@
 
 set :rails_env, 'testprod'
 
-server "#{ENV['HOST_NAME']}",
+server "#{ENV['REMOTE_HOST_NAME']}",
        user: 'ec2-user',
        roles: %w(web app),
        ssh_options: {
