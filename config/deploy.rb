@@ -43,6 +43,18 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+server "#{ENV['REMOTE_HOST_NAME']}",
+       user: 'ec2-user',
+       roles: %w(web app),
+       ssh_options: {
+         user: 'ec2-user', # overrides user setting above
+         keys: %w(~/.ssh/jenkins-slave-key),
+         forward_agent: false,
+         auth_methods: %w(publickey password)
+         # password: 'please use keys'
+       }
+
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -58,6 +70,7 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
+        execute "echo #{ENV['REMOTE_HOST_NAME']}"
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
         execute "echo #{fetch(:rails_env)} > /tmp/unicorn_environment"

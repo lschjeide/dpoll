@@ -44,13 +44,13 @@
 
 set :rails_env, 'testprod'
 
-server "#{ENV['REMOTE_HOST_NAME']}",
-       user: 'ec2-user',
-       roles: %w(web app),
-       ssh_options: {
-         user: 'ec2-user', # overrides user setting above
-         keys: %w(~/.ssh/jenkins-slave-key),
-         forward_agent: false,
-         auth_methods: %w(publickey password)
-         # password: 'please use keys'
-       }
+# server %w{server_name},
+#        user: 'ec2-user',
+#        roles: %w(web app),
+#        ssh_options: {
+#          user: 'ec2-user', # overrides user setting above
+#          keys: %w(~/.ssh/jenkins-slave-key),
+#          forward_agent: false,
+#          auth_methods: %w(publickey password)
+#          # password: 'please use keys'
+#        }
