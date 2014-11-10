@@ -58,7 +58,6 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
-        execute "echo live server %w(~/live_server)"
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
         execute "echo #{fetch(:rails_env)} > /tmp/unicorn_environment"
