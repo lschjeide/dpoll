@@ -4,4 +4,3 @@
 require File.expand_path('../config/application', __FILE__)
 
 Dpoll::Application.load_tasks
-RuboCop::RakeTask.new
