@@ -12,7 +12,7 @@ dpollApp.factory("Event", function ($resource) {
             'show':    { method: 'GET', isArray: false },
             'update':  { method: 'PUT' },
             'destroy': { method: 'DELETE' },
-            'results': { method: 'GET', }
+            'results': { method: 'GET' }
         }
     );
 });
@@ -44,6 +44,9 @@ eventControllers.controller('EventDestroyCtrl', ['$scope', '$location', '$routeP
     $scope.event = Event.destroy($routeParams,
           function(data, status, headers, config) {
             $location.path( "/events" );
+          },
+          function(data, status, headers, config) {
+              $location.path( "/events" );
           }
     );
     
@@ -56,6 +59,9 @@ eventControllers.controller('EventNewCtrl', ['$scope', '$location', 'Event',
   	$scope.hideEdit = false;
     $scope.addEvent = function(){
     	Event.create($scope.event,
+          function(data, status, headers, config) {
+            $location.path( "/events" );
+          },
           function(data, status, headers, config) {
             $location.path( "/events" );
           }
@@ -77,6 +83,9 @@ eventControllers.controller('EventEditCtrl', ['$scope', '$routeParams', '$locati
     	Event.update($scope.event,
           function(data, status, headers, config) {
             $scope.event = data;
+            $location.path( "/events" );
+          },
+          function(data, status, headers, config) {
             $location.path( "/events" );
           }
       );
