@@ -27,10 +27,6 @@ When(/^I wait a moment$/) do
   sleep(1)
 end
 
-When(/^I am not logged in$/) do
-  visit('/users/sign_out') # ensure that at least
-end
-
 When(/^I am logged in$/) do
   email = 'testing@man.net'
   password = 'secretpass'
