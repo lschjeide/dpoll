@@ -12,7 +12,7 @@ set :keep_releases, 20   # After several years manually use: cap deploy:cleanup 
 
 # Default deploy_to directory is /var/www/my_app
 
-set :deploy_to, '/tmp'
+set :deploy_to, '/var'
 
 set :scm, :gitcopy
 set :deploy_via, :copy
@@ -60,7 +60,7 @@ namespace :deploy do
       within release_path do
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-        execute "echo #{fetch(:rails_env)} > /tmp/unicorn_environment"
+        execute "echo #{fetch(:rails_env)} > /var/unicorn_environment"
         execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
         execute 'sudo rm -rf /home/ec2-user/unicorn'
         execute "ln -s #{release_path} /home/ec2-user/unicorn"
