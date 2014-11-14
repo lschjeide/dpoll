@@ -15,7 +15,7 @@ Feature: Delete events
   	And I delete the event 'Event 1'
     Then I should see the following events
      | Name             | Description                 |  Date |
-     | Event 2 			    | Event nondescription		    |       |
+     | Event 2 		    | Event nondescription		  |       |
 
   @javascript
   Scenario: Should be able to delete an event on the events page [FULLSCREEN]

@@ -1,3 +1,3 @@
 watch( '.*\.rb' ) do
-  system 'rake precheckin'
+  system 'rake rubocop spec'
 end
