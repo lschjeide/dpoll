@@ -12,7 +12,7 @@ set :keep_releases, 20   # After several years manually use: cap deploy:cleanup 
 
 # Default deploy_to directory is /var/www/my_app
 
-set :deploy_to, '/var'
+set :deploy_to, '/deploy'
 
 set :scm, :gitcopy
 set :deploy_via, :copy
