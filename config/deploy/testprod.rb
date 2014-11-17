@@ -57,7 +57,7 @@
 # EOF`
 # echo $SERVER_FILE > config/deploy/testprod.rb
 
-server_name = `aws ec2 describe-instances   --region=ap-southeast-2   --filter 'Name=tag:Live,Values=$LIVEVAL'   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text`
+server_name = `aws ec2 describe-instances   --region=ap-southeast-2   --filter "Name=tag:Live,Values=ENV['LIVEVAL']"   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text`
 
 server_name.chop!
 
