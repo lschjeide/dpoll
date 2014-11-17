@@ -58,12 +58,10 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
+        execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-        execute "echo #{fetch(:rails_env)} > /var/unicorn_environment"
-        execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
-        execute 'sudo rm -rf /home/ec2-user/unicorn'
-        execute "ln -s #{release_path} /home/ec2-user/unicorn"
+        execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment"
         execute 'sudo /sbin/service unicorn start'
       end
     end
