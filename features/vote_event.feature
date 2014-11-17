@@ -2,7 +2,8 @@ Feature: Vote on an event
   In order to vote for an event
 
   Background:
-    Given the following events exist
+    Given I am logged in
+    And the following events exist
      | name    | description            | event_date |
      | DMT 	   | DMT Talkerwalker       | 2014-10-07 |
     And I go to vote for 'DMT'

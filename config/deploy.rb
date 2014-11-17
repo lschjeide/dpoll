@@ -5,7 +5,7 @@ set :application, 'dpoll'
 
 set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 set :branch, 'origin/master'
-set :keep_releases, 2  
+set :keep_releases, 2
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -48,16 +48,16 @@ namespace :deploy do
       execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
       execute 'sudo /sbin/service unicorn start'
     end
-  end 
- 
+  end
+
   after :publishing, :restart
 
   before :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      within release_path do     
+      within release_path do
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-        execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment" 
+        execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment"
       end
     end
   end

@@ -2,7 +2,8 @@ Feature: View vote summary
   In order to view poll results
 
   Background:
-    Given the following events exist
+    Given I am logged in
+    And the following events exist
      | name    | description            | event_date |
      | DMT 	   | Dius Monthly Talk      | 2014-10-07 |
     And event 'DMT' has the following votes
