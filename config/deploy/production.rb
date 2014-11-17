@@ -32,6 +32,8 @@
 # And/or per server (overrides global)
 # ------------------------------------
 
+p "Name=tag:Live,Values=ENV['LIVEVAL']"
+
 server_name = `aws ec2 describe-instances   --region=ap-southeast-2   --filter "Name=tag:Live,Values=ENV['LIVEVAL']"   --query='Reservations[*].Instances[*].PrivateDnsName'   --output=text`
 
 server_name.chop!
