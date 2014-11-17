@@ -41,13 +41,25 @@ set :pty, true
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 namespace :deploy do
+  desc "restart (upgrade) unicorn server"
+  task :restart, roles: :app, except: {no_release: true} do
+    run "service unicorn upgrade"
+  end
+end
+
+
+namespace :deploy do
 
   desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
-      execute 'sudo /sbin/service unicorn start'
-    end
+  # task :restart do
+  #   on roles(:app), in: :sequence, wait: 5 do
+  #     execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
+  #     execute 'sudo /sbin/service unicorn start'
+  #   end
+  # end
+
+  task :restart, roles: :app, except: {no_release: true} do
+    run "service unicorn upgrade"
   end
 
   after :publishing, :restart
