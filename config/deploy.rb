@@ -57,10 +57,15 @@ namespace :deploy do
   #     execute 'sudo /sbin/service unicorn start'
   #   end
   # end
-
-  task :restart, roles: :app, except: {no_release: true} do
-    run "service unicorn upgrade"
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      run "service unicorn upgrade"
+    end
   end
+
+  # task :restart, roles: :app, except: {no_release: true} do
+  #   run "service unicorn upgrade"
+  # end
 
   after :publishing, :restart
 
