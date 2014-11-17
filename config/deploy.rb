@@ -48,21 +48,19 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+      execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
+      execute 'sudo /sbin/service unicorn start'
     end
   end 
 
   after :publishing, :restart
 
-  after :restart, :clear_cache do
+  before :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      within release_path do
-        execute 'sudo /sbin/service unicorn stop || echo unicorn not running'
+      within release_path do     
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
-        execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment"
-        execute 'sudo /sbin/service unicorn start'
+        execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment" 
       end
     end
   end
