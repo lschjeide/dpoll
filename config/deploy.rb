@@ -5,7 +5,7 @@ set :application, 'dpoll'
 
 set :repo_url, 'https://github.com/lschjeide/dpoll.git'
 set :branch, 'origin/master'
-set :keep_releases, 20   # After several years manually use: cap deploy:cleanup -s keep_releases=1
+set :keep_releases, 2  
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -40,9 +40,6 @@ set :pty, true
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
 namespace :deploy do
 
   desc 'Restart application'
@@ -52,7 +49,7 @@ namespace :deploy do
       execute 'sudo /sbin/service unicorn start'
     end
   end 
-
+ 
   after :publishing, :restart
 
   before :restart, :clear_cache do
