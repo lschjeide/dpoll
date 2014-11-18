@@ -7,6 +7,7 @@ stdout_path   "#{root}/log/unicorn.log"
 
 #listen 80
 
+
 preload_app true
 working_directory root
 worker_processes 3
@@ -14,6 +15,9 @@ timeout 30
 
 Dir.mkdir("#{pid_root}/tmp") unless Dir.exists?("#{pid_root}/tmp")
 Dir.mkdir("#{pid_root}/tmp/pids") unless Dir.exists?("#{pid_root}/tmp/pids")
+Dir.mkdir("#{pid_root}/tmp/sockets") unless Dir.exists?("#{pid_root}/tmp/sockets")
+
+listen "/deploy/tmp/sockets/unicorn.sock", :backlog => 64
 
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"

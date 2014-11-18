@@ -75,6 +75,7 @@ namespace :deploy do
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
         execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment"
+        execute "sudo /etc/init.d/nginx start"
       end
     end
   end
