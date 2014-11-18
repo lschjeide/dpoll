@@ -1,6 +1,7 @@
 root = "/deploy/current"
+pid_root = "/deploy"
 
-pid           "#{root}/tmp/pids/unicorn.pid"
+pid           "#{pid_root}/tmp/pids/unicorn.pid"
 stderr_path   "#{root}/log/unicorn_error.log"
 stdout_path   "#{root}/log/unicorn.log"
 
@@ -11,8 +12,8 @@ working_directory root
 worker_processes 3
 timeout 30
 
-Dir.mkdir("#{root}/tmp") unless Dir.exists?("#{root}/tmp")
-Dir.mkdir("#{root}/tmp/pids") unless Dir.exists?("#{root}/tmp/pids")
+Dir.mkdir("#{pid_root}/tmp") unless Dir.exists?("#{pid_root}/tmp")
+Dir.mkdir("#{pid_root}/tmp/pids") unless Dir.exists?("#{pid_root}/tmp/pids")
 
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
@@ -30,7 +31,7 @@ before_fork do |server, worker|
   #
   # Using this method we get 0 downtime deploys.
 
-  old_pid = "#{root}/tmp/pids/unicorn.pid.oldbin"
+  old_pid = "#{pid_root}/tmp/pids/unicorn.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
