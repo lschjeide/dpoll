@@ -11,6 +11,9 @@ working_directory root
 worker_processes 3
 timeout 30
 
+Dir.mkdir("#{root}/tmp") unless Dir.exists?("#{root}/tmp")
+Dir.mkdir("#{root}/tmp/pids") unless Dir.exists?("#{root}/tmp/pids")
+
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
