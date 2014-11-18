@@ -56,7 +56,7 @@ after_fork do |server, worker|
 
   begin
     uid, gid = Process.euid, Process.egid
-    user, group = 'deployer', 'deployer'
+    user, group = 'ec2-user', 'ec2-user'
     target_uid = Etc.getpwnam(user).uid
     target_gid = Etc.getgrnam(group).gid
     worker.tmp.chown(target_uid, target_gid)
