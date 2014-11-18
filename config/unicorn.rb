@@ -5,7 +5,7 @@ pid           "#{pid_root}/tmp/pids/unicorn.pid"
 stderr_path   "#{root}/log/unicorn_error.log"
 stdout_path   "#{root}/log/unicorn.log"
 
-listen "/tmp/unicorn.gigmit.com.socket", :backlog => 2048
+listen 80
 
 preload_app true
 working_directory root
