@@ -59,7 +59,7 @@ namespace :deploy do
   # end
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      run "service unicorn upgrade"
+      run "sudo /sbin/service unicorn upgrade"
     end
   end
 
