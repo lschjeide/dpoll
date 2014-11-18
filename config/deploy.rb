@@ -69,7 +69,7 @@ namespace :deploy do
 
   after :publishing, :restart
 
-  before :restart, :clear_cache do
+  before :publishing, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
         execute :bundle, 'install --deployment'
