@@ -5,7 +5,7 @@ pid           "#{pid_root}/tmp/pids/unicorn.pid"
 stderr_path   "#{root}/log/unicorn_error.log"
 stdout_path   "#{root}/log/unicorn.log"
 
-listen 80
+#listen 80
 
 preload_app true
 working_directory root
