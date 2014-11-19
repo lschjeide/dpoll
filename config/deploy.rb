@@ -47,7 +47,6 @@ set :pty, true
 #   end
 # end
 
-
 namespace :deploy do
 
   desc 'Restart (upgrade) unicorn server'
@@ -59,7 +58,7 @@ namespace :deploy do
   # end
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "sudo /sbin/service unicorn upgrade"
+      execute 'sudo /sbin/service unicorn upgrade'
     end
   end
 
@@ -75,7 +74,7 @@ namespace :deploy do
         execute :bundle, 'install --deployment'
         execute :bundle, "exec rake db:migrate RAILS_ENV=#{fetch(:rails_env)}"
         execute "echo #{fetch(:rails_env)} > /deploy/unicorn_environment"
-        execute "sudo /etc/init.d/nginx start"
+        execute 'sudo /etc/init.d/nginx start'
       end
     end
   end
