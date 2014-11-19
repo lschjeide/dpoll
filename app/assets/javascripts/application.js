@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require angular
 //= require angular-route
 //= require angular-resource
